@@ -11,7 +11,7 @@ class calculatorLogic {
     fun onInput(value: String): String {
         return when {
             value == "CE" -> clearEntry()
-            value in listOf("+", "-", "*", "/") -> handleOperation(value)
+            value in listOf("+", "-", "×", "÷") -> handleOperation(value)
             value == "=" -> calculateResult()
             value == "." -> handleDecimal()
             else -> handleNumber(value)
@@ -55,8 +55,8 @@ class calculatorLogic {
             val result = when (operation) {
                 "+" -> num1 + num2
                 "-" -> num1 - num2
-                "*" -> num1 * num2
-                "/" -> if (num2 != 0.0) num1 / num2 else "Error"
+                "×" -> num1 * num2
+                "÷" -> if (num2 != 0.0) num1 / num2 else "Error"
                 else -> null
             }
 

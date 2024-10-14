@@ -34,14 +34,23 @@ fun CalculadoraView(modifier: Modifier = Modifier) {
     var displayValue by remember { mutableStateOf("0") }
     val calculatorLogic = remember { calculatorLogic() }
 
-    Column(modifier = modifier.fillMaxSize()) {
+    Column(modifier = modifier.fillMaxSize()
+    ) {
         Visor(text = displayValue)
         Spacer(modifier = Modifier.height(16.dp))
         Calculadora(onClick = { buttonText ->
-            if (buttonText == "") {
-                displayValue = calculatorLogic.onInput(buttonText)
-            }else {
-                displayValue = calculatorLogic.onInput(buttonText)
+            val result = calculatorLogic.onInput(buttonText)
+            displayValue = try {
+
+                val doubleValue = result.toDouble()
+
+                if (doubleValue % 1 == 0.0) {
+                    doubleValue.toInt().toString()
+                } else {
+                    result
+                }
+            } catch (e: NumberFormatException) {
+                result
             }
         })
     }
@@ -70,8 +79,8 @@ fun CalculadoraButton(value: String, onClick: (String) -> Unit, modifier: Modifi
 @Composable
 fun Calculadora(onClick: (String) -> Unit) {
     val buttonValues = listOf(
-        listOf("7", "8", "9", "/"),
-        listOf("4", "5", "6", "*"),
+        listOf("7", "8", "9", "÷"),
+        listOf("4", "5", "6", "×"),
         listOf("1", "2", "3", "-"),
         listOf("0", ".", "=", "+"),
         listOf("CE")
@@ -81,7 +90,7 @@ fun Calculadora(onClick: (String) -> Unit) {
         buttonValues.forEach { row ->
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 row.forEach { value ->
-                    val isOperation = value in listOf("/", "*", "-", "+", "=", "CE")
+                    val isOperation = value in listOf("÷", "×", "-", "+", "=", "CE")
                     CalculadoraButton(
                         value = value,
                         onClick = onClick,
