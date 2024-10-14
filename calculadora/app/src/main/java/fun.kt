@@ -7,8 +7,14 @@ class calculatorLogic {
     var currentNumber: String = ""
     var previousNumber: String = ""
     var operation: String? = null
+    var shouldClearDisplay: Boolean = false
 
     fun onInput(value: String): String {
+        if (shouldClearDisplay && value.matches(Regex("\\d"))) {
+            currentNumber = ""
+            shouldClearDisplay = false
+        }
+
         return when {
             value == "CE" -> clearEntry()
             value in listOf("+", "-", "×", "÷") -> handleOperation(value)
@@ -63,6 +69,7 @@ class calculatorLogic {
             currentNumber = result.toString()
             previousNumber = ""
             operation = null
+            shouldClearDisplay = true
             currentNumber
         } catch (e: ArithmeticException) {
             "Error"
@@ -73,5 +80,4 @@ class calculatorLogic {
         currentNumber = ""
         return "0"
     }
-
-}
+    }
