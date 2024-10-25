@@ -30,8 +30,8 @@ data class FormLine(
 fun FormScreen() {
     val formLines = remember { mutableStateListOf<FormLine>(
         FormLine(),
-        FormLine(),
         FormLine()
+
     ) }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
