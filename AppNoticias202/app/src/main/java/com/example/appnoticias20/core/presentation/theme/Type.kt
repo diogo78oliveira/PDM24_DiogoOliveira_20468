@@ -1,4 +1,4 @@
-package com.example.appnoticias20.theme
+package com.example.appnoticias20.core.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

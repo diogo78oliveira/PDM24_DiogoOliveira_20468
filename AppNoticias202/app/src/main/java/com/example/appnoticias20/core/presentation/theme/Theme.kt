@@ -1,4 +1,4 @@
-package com.example.appnoticias20.theme
+package com.example.appnoticias20.core.presentation.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
