@@ -1,7 +1,7 @@
-package com.ag_apps.newsapp.core.di
+package com.example.appnoticias20.core.di
 
 import androidx.room.Room
-import com.ag_apps.newsapp.core.data.local.ArticleDatabase
+import com.example.appnoticias20.core.data.local.ArticleDatabase
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.engine.cio.endpoint

@@ -1,4 +1,4 @@
-package com.example.appnoticias20.core.presentation.theme
+package com.example.appnoticias20.core.prensentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
@@ -15,7 +15,6 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
-
     titleLarge = TextStyle(
         fontFamily = FontFamily.Serif,
         fontWeight = FontWeight.Normal,

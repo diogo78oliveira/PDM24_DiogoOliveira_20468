@@ -1,10 +1,13 @@
-package com.ag_apps.newsapp.core.data
+package com.example.appnoticias20.core.data
 
-import com.ag_apps.newsapp.core.data.local.ArticlesDao
-import com.ag_apps.newsapp.core.data.remote.NewsListDto
-import com.ag_apps.newsapp.core.domain.NewsList
-import com.ag_apps.newsapp.core.domain.NewsRepository
-import com.ag_apps.newsapp.core.domain.NewsResult
+import com.example.appnoticias20.core.data.local.ArticlesDao
+import com.example.appnoticias20.core.data.remote.NewsListDto
+import com.example.appnoticias20.core.domain.NewsList
+import com.example.appnoticias20.core.domain.NewsRepository
+import com.example.appnoticias20.core.domain.NewsResult
+import com.example.appnoticias20core.data.toArticle
+import com.example.appnoticias20core.data.toArticleEntity
+import com.example.appnoticias20core.data.toNewsList
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -74,7 +77,7 @@ class NewsRepositoryImpl(
         }
     }
 
-    override suspend fun paginate(nextPage: String): Flow<NewsResult<NewsList>> {
+    override suspend fun paginate(nextPage: String?): Flow<NewsResult<NewsList>> {
         return flow {
             val remoteNewsList = try {
                 getRemoteNews(nextPage)

@@ -1,4 +1,4 @@
-package com.ag_apps.newsapp.core.data.remote
+package com.example.appnoticias20.core.data.remote
 
 import kotlinx.serialization.Serializable
 

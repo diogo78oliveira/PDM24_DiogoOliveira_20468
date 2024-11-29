@@ -1,4 +1,4 @@
-package com.ag_apps.newsapp.core.data.local
+package com.example.appnoticias20.core.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

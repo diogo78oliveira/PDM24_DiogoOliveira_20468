@@ -1,4 +1,4 @@
-package com.ag_apps.newsapp.core.domain
+package com.example.appnoticias20.core.domain
 
 import kotlinx.coroutines.flow.Flow
 

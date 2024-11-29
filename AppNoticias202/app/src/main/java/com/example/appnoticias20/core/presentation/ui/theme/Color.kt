@@ -1,4 +1,4 @@
-package com.example.appnoticias20.core.presentation.theme
+package com.example.appnoticias20.core.prensentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

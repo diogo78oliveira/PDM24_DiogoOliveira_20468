@@ -1,10 +1,10 @@
-package com.ag_apps.newsapp.core.data
+package com.example.appnoticias20core.data
 
-import com.ag_apps.newsapp.core.data.local.ArticleEntity
-import com.ag_apps.newsapp.core.data.remote.ArticleDto
-import com.ag_apps.newsapp.core.data.remote.NewsListDto
-import com.ag_apps.newsapp.core.domain.Article
-import com.ag_apps.newsapp.core.domain.NewsList
+import com.example.appnoticias20.core.data.local.ArticleEntity
+import com.example.appnoticias20.core.data.remote.ArticleDto
+import com.example.appnoticias20.core.data.remote.NewsListDto
+import com.example.appnoticias20.core.domain.Article
+import com.example.appnoticias20.core.domain.NewsList
 
 
 

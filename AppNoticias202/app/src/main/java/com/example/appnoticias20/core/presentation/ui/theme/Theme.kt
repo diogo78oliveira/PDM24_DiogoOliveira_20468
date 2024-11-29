@@ -1,4 +1,4 @@
-package com.example.appnoticias20.core.presentation.theme
+package com.example.appnoticias20.core.prensentation.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -33,7 +33,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun AppNoticias20Theme(
+fun NewsAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
