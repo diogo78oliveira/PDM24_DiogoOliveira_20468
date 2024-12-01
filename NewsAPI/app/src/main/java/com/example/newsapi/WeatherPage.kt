@@ -64,7 +64,7 @@ fun WeatherPage(viewModel: WeatherViewModel) {
                     city = it
                 },
                 label = {
-                    Text(text = "Pesquisar")
+                    Text(text = "Pesquisar cidade")
                 }
             )
             IconButton(onClick = {
