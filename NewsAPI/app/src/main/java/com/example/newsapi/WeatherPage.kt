@@ -31,17 +31,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.example.newsapi.api.NetworkResponse
 import com.example.newsapi.api.WeatherModel
 
 @Composable
-fun WeatherPage(viewModel: WeatherViewModel) {
+fun WeatherPage(viewModel: WeatherViewModel, navController: NavController) {
 
-    var city by remember {
-        mutableStateOf("")
-    }
-
+    var city by remember { mutableStateOf("") }
     val weatherResult = viewModel.weatherResult.observeAsState()
 
     Column(
@@ -50,6 +48,7 @@ fun WeatherPage(viewModel: WeatherViewModel) {
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -60,15 +59,11 @@ fun WeatherPage(viewModel: WeatherViewModel) {
             OutlinedTextField(
                 modifier = Modifier.weight(1f),
                 value = city,
-                onValueChange = {
-                    city = it
-                },
-                label = {
-                    Text(text = "Pesquisar cidade")
-                }
+                onValueChange = { city = it },
+                label = { Text(text = "Pesquisar cidade") }
             )
             IconButton(onClick = {
-                viewModel.getData(city)
+                navController.navigate("weather_details/$city")
             }) {
                 Icon(
                     imageVector = Icons.Default.Search,
@@ -77,23 +72,57 @@ fun WeatherPage(viewModel: WeatherViewModel) {
             }
         }
 
-        when (val result = weatherResult.value) {
-            is NetworkResponse.Error -> {
-                Text(text = result.message)
-            }
 
-            NetworkResponse.Loading -> {
-                CircularProgressIndicator()
-            }
-
-            is NetworkResponse.Success -> {
-                WeatherDetails(data =result.data)
-            }
-
-            null -> {}
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+            horizontalAlignment = Alignment.Start
+        ) {
+            CityRow(cityName = "London", onClick = {
+                navController.navigate("weather_details/London")
+            })
+            CityRow(cityName = "Paris", onClick = {
+                navController.navigate("weather_details/Paris")
+            })
+            CityRow(cityName = "Braga", onClick = {
+                navController.navigate("weather_details/Braga")
+            })
+            CityRow(cityName = "California", onClick = {
+                navController.navigate("weather_details/California")
+            })
+            CityRow(cityName = "Hong Kong", onClick = {
+                navController.navigate("weather_details/Hong Kong")
+            })
         }
     }
 }
+
+
+@Composable
+fun CityRow(cityName: String, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = cityName,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Medium,
+            modifier = Modifier.padding(start = 16.dp)
+        )
+        IconButton(onClick = onClick) {
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = "Pesquisar $cityName"
+            )
+        }
+    }
+}
+
 
 
 @Composable
@@ -148,7 +177,7 @@ fun WeatherDetails(data : WeatherModel) {
                 ) {
                     HeatherKeyVal("Humidade", data.current.humidity)
                     HeatherKeyVal("Vento", data.current.wind_kph+" km/h")
-                    }
+                }
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceAround
@@ -163,11 +192,11 @@ fun WeatherDetails(data : WeatherModel) {
                     HeatherKeyVal("Hora Local", data.location.localtime.split(" ")[1])
                     HeatherKeyVal("Data Local", data.location.localtime.split(" ")[0])
                 }
-                }
-
             }
+
         }
     }
+}
 
 
 @Composable
