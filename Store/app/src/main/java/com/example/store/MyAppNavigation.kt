@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.store.pages.LoginPage
+import com.example.store.pages.SignupPage
 
 @Composable
 fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel) {
@@ -16,7 +17,7 @@ fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel) 
             LoginPage(modifier,navController,authViewModel)
         }
         composable("Registo"){
-            LoginPage(modifier,navController,authViewModel)
+            SignupPage(modifier,navController,authViewModel)
         }
         composable("login"){
             LoginPage(modifier,navController,authViewModel)

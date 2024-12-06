@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,12 +28,16 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController,authVie
         mutableStateOf("")
         }
 
+    var password by remember {
+        mutableStateOf("")
+    }
+
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Login Page", fontSize = 32.sp)
+        Text(text = "Login", fontSize = 32.sp)
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -44,5 +50,29 @@ fun LoginPage(modifier: Modifier = Modifier,navController: NavController,authVie
             Text(text = "Email")
             }
         )
+        OutlinedTextField(
+            value = password,
+            onValueChange = {
+                password = it
+            },
+            label = {
+                Text(text = "Password")
+            }
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = {
+
+        }) {
+            Text(text = "Login")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        TextButton(onClick = {
+            navController.navigate("Registo")
+        }) {
+            Text(text = "Criar Conta")
+        }
     }
 }
