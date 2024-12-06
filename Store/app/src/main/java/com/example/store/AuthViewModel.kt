@@ -26,16 +26,46 @@ class AuthViewModel : ViewModel() {
         }
     }
 
-    fun logjn(email : String,password : String){
+    fun login(email : String,password : String){
+
+        if(email.isEmpty() || password.isEmpty()){
+            _authState.value = AuthState.Error("Email e Password nao podem estar vazios")
+            return
+        }
+
         _authState.value = AuthState.Loading
         auth.signInWithEmailAndPassword(email,password)
             .addOnCompleteListener{task->
                 if(task.isSuccessful){
                     _authState.value = AuthState.Authenticated
                 }else {
-
+                    _authState.value = AuthState.Error(task.exception?.message?:"Erro")
                 }
             }
+    }
+
+    fun registo(email : String,password : String){
+
+        if(email.isEmpty() || password.isEmpty()){
+            _authState.value = AuthState.Error("Email e Password nao podem estar vazios")
+            return
+        }
+
+        _authState.value = AuthState.Loading
+        auth.createUserWithEmailAndPassword(email,password)
+            .addOnCompleteListener{task->
+                if(task.isSuccessful){
+                    _authState.value = AuthState.Authenticated
+                }else {
+                    _authState.value = AuthState.Error(task.exception?.message?:"Erro")
+                }
+            }
+    }
+
+
+    fun signout(){
+        auth.signOut()
+        _authState.value = AuthState.Unauthenticaded
     }
 
 }
