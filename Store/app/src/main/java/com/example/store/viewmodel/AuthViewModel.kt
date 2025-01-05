@@ -1,10 +1,9 @@
-package com.example.store
+package com.example.store.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.flow.MutableStateFlow
 
 class AuthViewModel : ViewModel() {
 
@@ -39,7 +38,7 @@ class AuthViewModel : ViewModel() {
                 if(task.isSuccessful){
                     _authState.value = AuthState.Authenticated
                 }else {
-                    _authState.value = AuthState.Error(task.exception?.message?:"Erro")
+                    _authState.value = AuthState.Error(task.exception?.message ?: "Erro")
                 }
             }
     }
@@ -57,7 +56,7 @@ class AuthViewModel : ViewModel() {
                 if(task.isSuccessful){
                     _authState.value = AuthState.Authenticated
                 }else {
-                    _authState.value = AuthState.Error(task.exception?.message?:"Erro")
+                    _authState.value = AuthState.Error(task.exception?.message ?: "Erro")
                 }
             }
     }

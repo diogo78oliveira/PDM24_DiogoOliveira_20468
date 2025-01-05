@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "850960838973",
-    "project_id": "storeidpdm",
-    "storage_bucket": "storeidpdm.firebasestorage.app"
+    "project_number": "276307965693",
+    "project_id": "carrinho-d86e0",
+    "storage_bucket": "carrinho-d86e0.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:850960838973:android:a28688ba637087b4d49554",
+        "mobilesdk_app_id": "1:276307965693:android:59bf5583442f16771c7094",
         "android_client_info": {
           "package_name": "com.example.store"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCB-7WpRwxUshLCOBx4N1P1WMHiJ8mYv1M"
+          "current_key": "AIzaSyBEw9zN-tGuW_rTvK_KXu5FV99KXBRVkAo"
         }
       ],
       "services": {
