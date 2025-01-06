@@ -13,6 +13,7 @@ import com.example.store.viewmodel.AuthViewModel
 import com.example.store.viewmodel.CartViewModel
 import com.example.store.viewmodel.ProductViewModel
 
+
 @Composable
 fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel) {
     val navController = rememberNavController()
@@ -29,11 +30,10 @@ fun MyAppNavigation(modifier: Modifier = Modifier,authViewModel: AuthViewModel) 
         }
         composable("home"){
             HomePage(productViewModel,cartViewModel,authViewModel,navController)
-
         }
         composable("checkout"){
             CheckoutPage(cartViewModel,navController)
-
         }
+
     })
 }
